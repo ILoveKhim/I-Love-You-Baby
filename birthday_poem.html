@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Khim!</title>
+    <style>
+        /* Basic Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+        }
+
+        .button {
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #ff005c;
+        }
+
+        .popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            z-index: 10;
+            font-size: 14px;
+        }
+
+        .popup h2 {
+            color: #ff477e;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .popup p {
+            margin: 10px 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .popup button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #ff005c;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff176;
+            animation: fall 4s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="button" id="openPopup">Click to Celebrate!</button>
+
+    <div class="popup" id="popup">
+        <h2>Happy Birthday Khim!</h2>
+        <p>I can’t even put into words how glad I am to be able to celebrate this special occasion with you. Because it’s been quite a year for the both of us. We’ve certainly had our downs, but the ups have made it all worth it.</p>
+        <p>I know we had a lot of fights and misunderstandings, but I’m thankful that we’ve been able to move past it all. I am the happiest when I am with you. I’m the luckiest boyfriend there is and aawayin ko whosoever disagrees😝. You will always be the most beautiful woman to me, always. The warmth that you brought into my life is one that I can no longer live without. I am so so grateful to be with you.</p>
+        <p>Happy 18th My Love! Though I am not the birthday boy, my wish for your birthday is for you to stay happy and healthy. I will always be by your side, praying for your success.</p>
+        <p>Sincerely Yours, <br><b>Nathan (your baby)</b></p>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+        const openPopup = document.getElementById("openPopup");
+        const closePopup = document.getElementById("closePopup");
+        const popup = document.getElementById("popup");
+        const confettiContainer = document.getElementById("confetti");
+
+        // Show popup and confetti
+        openPopup.addEventListener("click", () => {
+            popup.style.display = "block";
+            createConfetti();
+        });
+
+        // Close popup and clear confetti
+        closePopup.addEventListener("click", () => {
+            popup.style.display = "none";
+            clearConfetti();
+        });
+
+        // Generate confetti
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement("div");
+                confettiPiece.classList.add("confetti-piece");
+                confettiPiece.style.left = `${Math.random() * 100}%`;
+                confettiPiece.style.backgroundColor = getRandomColor();
+                confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+                confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
+        // Remove all confetti
+        function clearConfetti() {
+            confettiContainer.innerHTML = "";
+        }
+
+        // Generate random colors for confetti
+        function getRandomColor() {
+            const colors = ["#ff477e", "#ff9a9e", "#fff176", "#ffcc80", "#80deea", "#c5e1a5"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+
+</body>
+</html>
